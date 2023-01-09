@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script defer src="./index.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/b19211e418.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./index.css">
     <title>Video Player KT</title>
 </head>
@@ -15,20 +16,9 @@
     <div id="player-wrapper">
         <!-- <video src="https://cdn.jwplayer.com/videos/ch1le878-tABHzWkn.mp4"></video> -->
         <video id="video"></video>
-        <script>
-            var video = document.getElementById('video');
-            var videoSrc = 'https://cdn.jwplayer.com/manifests/8Hw3FD28.m3u8';
-            if (Hls.isSupported()) {
-                console.error('line: 22, file: html, no native support ->' );
-                var hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                console.error('line: 28, file: html, native support ->' );
-                video.src = videoSrc;
-            }
-        </script>
+        <div id="controls">
+            <button id="play"><i class="fa-solid fa-play"></i><i class="fa-solid fa-pause" style="display: none;"></i></button>
+        </div>
     </div>
 </body>
 </html>
