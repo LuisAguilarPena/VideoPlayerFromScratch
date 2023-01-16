@@ -13,12 +13,37 @@
 <body>
     <h1>Nice looking Video Player</h1>
     <p>https://cdn.jwplayer.com/manifests/8Hw3FD28.m3u8</p>
-    <div id="player-wrapper">
-        <!-- <video src="https://cdn.jwplayer.com/videos/ch1le878-tABHzWkn.mp4"></video> -->
-        <video id="video"></video>
-        <div id="controls">
-            <input id="time-slider" type="range" min="0" max="100" step="1" value="25"></input>
-            <button id="play"><i class="fa-solid fa-play"></i><i class="fa-solid fa-pause" style="display: none;"></i></button>
+    <div id="player">
+        <div id="player-wrapper">
+            <!-- <video src="https://cdn.jwplayer.com/videos/ch1le878-tABHzWkn.mp4"></video> -->
+            <video id="video"></video>
+            <div id="controls">
+                <input id="time-slider" type="range" min="0" max="100" step="1" value="0"></input>
+                <div id="button-container">
+                    <div id="left--button-container">
+                        <button id="rewind">
+                            <i class="fa-solid fa-backward"></i>
+                        </button>
+                        <button id="play">
+                            <i class="fa-solid fa-play"></i>
+                            <i class="fa-solid fa-pause" style="display: none;"></i>
+                        </button>
+                        <button id="forward">
+                            <i class="fa-solid fa-forward"></i>
+                        </button>
+                        <button id="mute">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <i class="fa-solid fa-volume-xmark" style="display: none"></i>
+                        </button>
+                    </div>
+                    <div id="right--button-container">
+                        <button id="fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                            <i class="fa-solid fa-compress" style="display: none"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

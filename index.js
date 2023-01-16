@@ -33,9 +33,20 @@ const playVideo = e => {
 };
 
 // Sliders interaction
-const setTime = () => console.error(', ,  ->', );
+const setTime = (val) => video.currentTime = val;
+
+// Video Events
+video.onloadeddata = e => {
+    duration = Math.trunc(e.currentTarget.duration);
+    timeSlider.max = duration;
+}
+
+video.ontimeupdate = e => {
+    const currentTime = Math.trunc(e.currentTarget.currentTime);
+    timeSlider.value = currentTime;
+}
+
 
 // Control Interactions
 playButton.onclick = e => playVideo(e);
-
-timeSlider.oninput = e => setTime(e);
+timeSlider.oninput = e => setTime(e.currentTarget.value);
