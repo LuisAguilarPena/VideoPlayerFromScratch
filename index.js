@@ -65,12 +65,19 @@ video.ontimeupdate = e => { //? Adjust time slider value when video time changes
     timeSlider.value = currentTime;
 }
 
+video.onvolumechange = e => { //TODO fix shifting of elements on the left button container
+    const volume = e.currentTarget.volume;
+    if(volume === 0) {
+        iconSwitching(muteButton.querySelectorAll("i")[1], muteButton.querySelectorAll("i")[0]);
+    } else {
+        iconSwitching(muteButton.querySelectorAll("i")[0], muteButton.querySelectorAll("i")[1]);
+    }
+}
+
 // Control Interactions
 timeSlider.oninput = e => setTime(e.currentTarget.value);
-rewindButton.onclick = e => rewindVideo(e);
+rewindButton.onclick = () => rewindVideo();
 playButton.onclick = e => playVideo(e);
-forwardButton.onclick = e => forwardVideo(e);
+forwardButton.onclick = () => forwardVideo();
 muteButton.onclick = e => muteVideo(e);
 volumeSlider.oninput = e => setVolume(e.currentTarget.value);
-
-// video.volume = 1 -> 100%
