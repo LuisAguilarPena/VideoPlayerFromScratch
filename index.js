@@ -1,8 +1,10 @@
 // Initial declartions 
 const video = document.getElementById('video');
 const videoSrc = 'https://cdn.jwplayer.com/manifests/8Hw3FD28.m3u8';
-const playButton = document.getElementById('play');
 const timeSlider = document.getElementById('time-slider');
+const playButton = document.getElementById('play');
+const rewindButton = document.getElementById('rewind');
+const forwardButton = document.getElementById('forward');
 
 let duration;
 
@@ -21,7 +23,11 @@ const iconSwitching = (iconToShow, iconToHide) => {
     iconToHide.style.display = "none";
 }
 
-// Button Handlers
+// Handlers
+const setTime = (val) => video.currentTime = val;
+const rewindVideo = () => video.currentTime -= 5;
+const forwardVideo = () => video.currentTime += 5;
+
 const playVideo = e => {
     if (video.paused) {
         video.play();
@@ -32,21 +38,19 @@ const playVideo = e => {
     }
 };
 
-// Sliders interaction
-const setTime = (val) => video.currentTime = val;
-
 // Video Events
-video.onloadeddata = e => {
+video.onloadeddata = e => { //? Set correct time slider values when video has been loaded
     duration = Math.trunc(e.currentTarget.duration);
     timeSlider.max = duration;
 }
 
-video.ontimeupdate = e => {
+video.ontimeupdate = e => { //? Adjust time slider value when video time changes
     const currentTime = Math.trunc(e.currentTarget.currentTime);
     timeSlider.value = currentTime;
 }
 
-
 // Control Interactions
-playButton.onclick = e => playVideo(e);
 timeSlider.oninput = e => setTime(e.currentTarget.value);
+playButton.onclick = e => playVideo(e);
+rewindButton.onclick = e => rewindVideo(e);
+forwardButton.onclick = e => forwardVideo(e);
